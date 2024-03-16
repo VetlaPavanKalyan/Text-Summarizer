@@ -3,7 +3,7 @@
 ## Workflows
 
 1. Update config.yaml
-2. Update parmas.yaml
+2. Update params.yaml
 3. Update entity
 4. Update configuration manager in src config
 5. Update the components
