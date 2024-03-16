@@ -22,7 +22,7 @@ async def index():
 async def training():
     try:
         obj = TrainingPipeline()
-        obj.train()
+        obj.main()
         return Response("Training successful !!")
 
     except Exception as e:
