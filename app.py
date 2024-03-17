@@ -5,6 +5,7 @@ from starlette.responses import RedirectResponse
 from fastapi.responses import Response
 from textSummarizer.pipeline.prediction import PredictionPipeline
 from textSummarizer.pipeline.train import TrainingPipeline
+from textSummarizer.pipeline.bart_prediction import BartPredictionPipeline
 
 
 
@@ -41,6 +42,15 @@ async def predict_route(text):
         raise e
     
 
+@app.post("/bart-cnn-predict")
+async def predict_bart(text, max_length = 128):
+    try:
+        obj = BartPredictionPipeline()
+        text = obj.predict(text, max_length)
+        return text
+    except Exception as e:
+        raise e
+
 
 if __name__=="__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8080)
+    uvicorn.run(app, host="0.0.0.0", port=65535)
